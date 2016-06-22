@@ -3,8 +3,8 @@ This is the README for the server for my first full stack web application.
 The application will be a way for my friends and I to track the performance
 of the teams and players in a recreational [goaltimate](https://en.wikipedia.org/wiki/Goaltimate) league.
 
-*The server will store the information about the players and teams.
-*The client will provide the UX.
+-   The server will store the information about the players and teams.
+-   The client will provide the UX.
 
 Planning materials include:
 
