@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'routes for players' do
-  it 'routes POST /new-player to the players#new action' do
-    expect(post('/new-player')).to route_to('players#new')
+  it 'routes POST /new-player to the players#create action' do
+    expect(post('/new-player')).to route_to('players#create')
   end
 
   it 'routes DELETE /delete-player/:id to the players#destroy action' do

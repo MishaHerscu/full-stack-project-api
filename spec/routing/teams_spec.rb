@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'routes for teams' do
-  it 'routes POST /new-team to the teams#new action' do
-    expect(post('/new-team')).to route_to('teams#new')
+  it 'routes POST /new-team to the teams#create action' do
+    expect(post('/new-team')).to route_to('teams#create')
   end
 
   it 'routes DELETE /delete-team/:id to the teams#destroy action' do

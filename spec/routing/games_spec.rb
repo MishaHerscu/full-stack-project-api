@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'routes for games' do
-  it 'routes POST /new-game to the games#new action' do
-    expect(post('/new-game')).to route_to('games#new')
+  it 'routes POST /new-game to the games#create action' do
+    expect(post('/new-game')).to route_to('games#create')
   end
 
   it 'routes DELETE /delete-game/:id to the games#destroy action' do
