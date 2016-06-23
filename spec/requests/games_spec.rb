@@ -21,7 +21,7 @@ RSpec.describe 'Games API' do
     end
 
     before(:each) do
-      post '/games', params: game_params
+      post '/games', game: game_params
 
       @game_details = JSON.parse(response.body)
       @game_id = JSON.parse(response.body)['game']['id']
