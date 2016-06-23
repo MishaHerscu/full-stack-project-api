@@ -4,8 +4,8 @@ RSpec.describe GamesController do
   def game_params
     {
       date: '2016-11-15',
-      winner: 1,
-      loser: 2
+      opponent: 2,
+      won: 'true'
     }
   end
 
@@ -32,14 +32,14 @@ RSpec.describe GamesController do
     def new_game_params
       {
         date: '2016-12-10',
-        winner: 2,
-        loser: 1
+        opponent: 2,
+        won: 'false'
       }
     end
 
     before(:each) do
       patch :update,
-            { id: @game_id, details: new_game_params },
+            { id: @game_id, new_game_details: new_game_params },
             format: :json
     end
 

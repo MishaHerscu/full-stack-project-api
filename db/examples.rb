@@ -76,11 +76,15 @@ Game.create(
   [
     {
       date: '2016-10-10',
+      opponent: 'Blue',
+      won: 'true',
       team_id: 1
     },
     {
-      date: '2016-10-15',
-      team_id: 2
+      date: '2016-10-10',
+      opponent: 'Green',
+      won: 'false',
+      team_id: 1
     }
   ]
 )

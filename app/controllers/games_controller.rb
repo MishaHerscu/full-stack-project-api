@@ -33,8 +33,10 @@ class GamesController < ApplicationController
   def update
     @game = Game.find(params[:id])
 
-    if @game.update(game_params)
-      head :no_content
+    if @game
+      @game[:date] = update_game[:date]
+      @game[:opponent] = update_game[:opponent]
+      @game[:won] = update_game[:won]
     else
       render json: @game.errors, status: :unprocessable_entity
     end
@@ -54,7 +56,13 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
   end
 
-  def game_params
-    params.require(:game).permit(:date, :winner, :loser)
+  def update_game
+    params.require(:new_game_details).permit(:date, :opponent, :won)
   end
+
+  def game_params
+    params.require(:game).permit(:date, :opponent, :won)
+  end
+
+  private :set_game, :update_game, :game_params
 end

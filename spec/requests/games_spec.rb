@@ -4,8 +4,8 @@ RSpec.describe 'Games API' do
   def game_params
     {
       date: '2016-11-15',
-      winner: 1,
-      loser: 2
+      opponent: 1,
+      won: 'false'
     }
   end
 

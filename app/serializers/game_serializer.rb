@@ -1,5 +1,4 @@
 #
 class GameSerializer < ActiveModel::Serializer
-  attributes :id, :date, :winner, :loser
-  # has_one :team
+  attributes :id, :date, :opponent, :won
 end

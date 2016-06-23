@@ -58,4 +58,6 @@ class PlayersController < ApplicationController
     params.require(:player).permit(:surname, :given_name, :email, :phone_number,
                                    :captain, :team_id, :user_id)
   end
+
+  private :set_player, :player_params
 end
