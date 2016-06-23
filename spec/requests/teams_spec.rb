@@ -19,7 +19,7 @@ RSpec.describe 'Teams API' do
     end
 
     before(:each) do
-      post '/new-team', credentials: team_params
+      post '/teams', params: team_params
 
       @teams = JSON.parse(response.body)
       @team_id = JSON.parse(response.body)['teams']['id']

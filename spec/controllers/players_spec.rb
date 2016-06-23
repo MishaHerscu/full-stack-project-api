@@ -19,7 +19,7 @@ RSpec.describe PlayersController do
 
   describe 'POST new player' do
     before(:each) do
-      post :create, { credentials: player_params }, format: :json
+      post :create, { params: player_params }, format: :json
     end
 
     it 'is successful' do
