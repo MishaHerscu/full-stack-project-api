@@ -13,7 +13,15 @@ RSpec.describe PlayersController do
     }
   end
 
-  after(:each) do
+  def player
+    Player.first
+  end
+
+  before(:all) do
+    Player.create!(player_params)
+  end
+
+  after(:all) do
     Player.delete_all
   end
 
@@ -47,7 +55,7 @@ RSpec.describe PlayersController do
 
     before(:each) do
       patch :update,
-            { id: @player_id, details: new_player_params },
+            { id: player.id, details: new_player_params },
             format: :json
     end
 
@@ -62,7 +70,7 @@ RSpec.describe PlayersController do
 
   describe 'DELETE delete player' do
     before(:each) do
-      delete :destroy, id: @player_id, format: :json
+      delete :destroy, id: player.id, format: :json
     end
 
     it 'is successful' do
@@ -91,7 +99,7 @@ RSpec.describe PlayersController do
 
   describe 'GET show' do
     before(:each) do
-      get :index, id: @player_id, format: :json
+      get :index, id: player.id, format: :json
     end
 
     it 'is successful' do

@@ -7,7 +7,15 @@ RSpec.describe TeamsController do
     }
   end
 
-  after(:each) do
+  def team
+    Team.first
+  end
+
+  before(:all) do
+    Team.create!(team_params)
+  end
+
+  after(:all) do
     Team.delete_all
   end
 
@@ -28,7 +36,7 @@ RSpec.describe TeamsController do
 
   describe 'DELETE delete team' do
     before(:each) do
-      delete :destroy, id: @team_id, format: :json
+      delete :destroy, id: team.id, format: :json
     end
 
     it 'is successful' do
@@ -57,7 +65,7 @@ RSpec.describe TeamsController do
 
   describe 'GET show' do
     before(:each) do
-      get :index, id: @team_id, format: :json
+      get :index, id: team.id, format: :json
     end
 
     it 'is successful' do
