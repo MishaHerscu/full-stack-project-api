@@ -15,7 +15,7 @@ RSpec.describe GamesController do
 
   describe 'POST new game' do
     before(:each) do
-      post :newgame, { credentials: game_params }, format: :json
+      post :create, { credentials: game_params }, format: :json
     end
 
     it 'is successful' do
@@ -41,7 +41,7 @@ RSpec.describe GamesController do
     end
 
     before(:each) do
-      patch :change_game,
+      patch :update,
             { id: @game_id, details: new_game_params },
             format: :json
     end
@@ -57,7 +57,7 @@ RSpec.describe GamesController do
 
   describe 'DELETE game' do
     before(:each) do
-      delete :delete_game, id: @game_id, format: :json
+      delete :destroy, id: @game_id, format: :json
     end
 
     it 'is successful' do

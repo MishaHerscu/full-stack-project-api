@@ -19,7 +19,7 @@ RSpec.describe PlayersController do
 
   describe 'POST new player' do
     before(:each) do
-      post :newplayer, { credentials: player_params }, format: :json
+      post :create, { credentials: player_params }, format: :json
     end
 
     it 'is successful' do
@@ -46,7 +46,7 @@ RSpec.describe PlayersController do
     end
 
     before(:each) do
-      patch :change_player,
+      patch :update,
             { id: @player_id, details: new_player_params },
             format: :json
     end
@@ -62,7 +62,7 @@ RSpec.describe PlayersController do
 
   describe 'DELETE delete player' do
     before(:each) do
-      delete :signout, id: @player_id, format: :json
+      delete :destroy, id: @player_id, format: :json
     end
 
     it 'is successful' do

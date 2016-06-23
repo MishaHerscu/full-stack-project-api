@@ -13,7 +13,7 @@ RSpec.describe TeamsController do
 
   describe 'POST new team' do
     before(:each) do
-      post :newteam, { credentials: team_params }, format: :json
+      post :create, { credentials: team_params }, format: :json
     end
 
     it 'is successful' do
@@ -28,7 +28,7 @@ RSpec.describe TeamsController do
 
   describe 'DELETE delete team' do
     before(:each) do
-      delete :delete_team, id: @team_id, format: :json
+      delete :destroy, id: @team_id, format: :json
     end
 
     it 'is successful' do
