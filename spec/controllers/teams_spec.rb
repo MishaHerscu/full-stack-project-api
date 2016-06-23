@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe TeamsController do
   def team_params
     {
-      name: 'Weapon X'
+      name: 'Weapon XI'
     }
   end
 
