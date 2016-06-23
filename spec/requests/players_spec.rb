@@ -8,8 +8,8 @@ RSpec.describe 'Players API' do
       email: 'mishaherscu@gmail.com',
       phone_number: '413-320-6636',
       captain: 'yes',
-      team_id: 1,
-      user_id: 1
+      team_id: '',
+      user_id: ''
     }
   end
 
