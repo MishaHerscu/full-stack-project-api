@@ -16,3 +16,40 @@
 #                password: 'abc123',
 #                password_confirmation: nil)
 # end
+
+Player.create(
+  [
+    {
+      surname: 'Herscu',
+      given_name: 'Misha',
+      email: 'mishaherscu@gmail.com',
+      phone_number: '413-320-6636',
+      captain: 'yes',
+      team_id: 1,
+      user_id: 1
+    },
+    {
+      surname: 'Cooper',
+      given_name: 'Alex',
+      email: 'cooper@gmail.com',
+      phone_number: '555-555-5555',
+      captain: 'no',
+      team_id: 1,
+      user_id: 1
+    }
+  ]
+)
+
+Team.create(
+  [
+    {
+      name: 'Weapon X'
+    },
+    {
+      name: 'Blue'
+    },
+    {
+      name: 'Green'
+    }
+  ]
+)
