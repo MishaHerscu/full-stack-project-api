@@ -8,8 +8,8 @@ RSpec.describe PlayersController do
       email: 'mishaherscu@gmail.com',
       phone_number: '413-320-6636',
       captain: 'yes',
-      team_id: 1,
-      user_id: 1
+      team_id: '',
+      user_id: ''
     }
   end
 
@@ -18,7 +18,7 @@ RSpec.describe PlayersController do
   end
 
   before(:all) do
-    Player.create!(player_params)
+    Player.create(player_params)
   end
 
   after(:all) do
@@ -43,19 +43,19 @@ RSpec.describe PlayersController do
   describe 'PATCH update profile info' do
     def new_player_params
       {
-        new_surname: 'Herscu',
-        new_given_name: 'Misha',
-        new_email: 'mishaherscu@gmail.com',
-        new_phone_number: '413-320-6636',
-        new_captain: 'yes',
-        new_team_id: 1,
-        new_user_id: 1
+        surname: 'Herscu',
+        given_name: 'Misha',
+        email: 'mishaherscu@gmail.com',
+        phone_number: '413-320-6636',
+        captain: 'no',
+        team_id: 1,
+        user_id: 1
       }
     end
 
     before(:each) do
       patch :update,
-            { id: player.id, details: new_player_params },
+            { id: player.id, new_player_details: new_player_params },
             format: :json
     end
 
