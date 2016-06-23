@@ -15,7 +15,7 @@ RSpec.describe GamesController do
 
   describe 'POST new game' do
     before(:each) do
-      post :create, { params: game_params }, format: :json
+      post :create, { game: game_params }, format: :json
     end
 
     it 'is successful' do

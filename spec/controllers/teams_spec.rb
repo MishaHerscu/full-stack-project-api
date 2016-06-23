@@ -13,7 +13,7 @@ RSpec.describe TeamsController do
 
   describe 'POST new team' do
     before(:each) do
-      post :create, { params: team_params }, format: :json
+      post :create, { team: team_params }, format: :json
     end
 
     it 'is successful' do
