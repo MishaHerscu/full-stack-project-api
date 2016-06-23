@@ -9,13 +9,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# %w(antony jeff matt jason).each do |name|
-#   email = "#{name}@#{name}.com"
-#   next if User.exists? email: email
-#   User.create!(email: email,
-#                password: 'abc123',
-#                password_confirmation: nil)
-# end
+%w(misha cooper josh jake).each do |name|
+  email = "#{name}@#{name}.com"
+  next if User.exists? email: email
+  User.create!(email: email,
+               password: 'abc123',
+               password_confirmation: 'abc123')
+end
 
 Team.create(
   [
@@ -68,6 +68,19 @@ Player.create(
       captain: 'no',
       team_id: 2,
       user_id: 4
+    }
+  ]
+)
+
+Game.create(
+  [
+    {
+      date: '2016-10-10',
+      team_id: 1
+    },
+    {
+      date: '2016-10-15',
+      team_id: 2
     }
   ]
 )
