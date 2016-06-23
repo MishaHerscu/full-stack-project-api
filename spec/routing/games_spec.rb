@@ -1,20 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe 'routes for games' do
-  it 'routes POST /new-game to the games#create action' do
-    expect(post('/new-game')).to route_to('games#create')
+  it 'routes POST /games to the games#create action' do
+    expect(post('/games/')).to route_to('games#create')
   end
 
-  it 'routes DELETE /delete-game/:id to the games#destroy action' do
-    expect(delete('/delete-game/1')).to route_to(
+  it 'routes DELETE /games/:id to the games#destroy action' do
+    expect(delete('/games/1')).to route_to(
       controller: 'games',
       action: 'destroy',
       id: '1'
     )
   end
 
-  it 'routes PATCH /update-game/:id to the games#update action' do
-    expect(patch('/update-game/1')).to route_to(
+  it 'routes PATCH /games/:id to the games#update action' do
+    expect(patch('/games/1')).to route_to(
       controller: 'games',
       action: 'update',
       id: '1'

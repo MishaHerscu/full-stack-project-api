@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe 'routes for players' do
-  it 'routes POST /new-player to the players#create action' do
-    expect(post('/new-player')).to route_to('players#create')
+  it 'routes POST /players to the players#create action' do
+    expect(post('/players')).to route_to('players#create')
   end
 
-  it 'routes DELETE /delete-player/:id to the players#destroy action' do
+  it 'routes DELETE /players/:id to the players#destroy action' do
     expect(delete('/players/1')).to route_to(
       controller: 'players',
       action: 'destroy',
@@ -13,8 +13,8 @@ RSpec.describe 'routes for players' do
     )
   end
 
-  it 'routes PATCH /update-player/:id to the players#update action' do
-    expect(patch('/update-player/1')).to route_to(
+  it 'routes PATCH /players/:id to the players#update action' do
+    expect(patch('/players/1')).to route_to(
       controller: 'players',
       action: 'update',
       id: '1'

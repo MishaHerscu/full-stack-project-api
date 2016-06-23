@@ -1,20 +1,20 @@
 require 'rails_helper'
 
 RSpec.describe 'routes for teams' do
-  it 'routes POST /new-team to the teams#create action' do
-    expect(post('/new-team')).to route_to('teams#create')
+  it 'routes POST /teams to the teams#create action' do
+    expect(post('/teams')).to route_to('teams#create')
   end
 
-  it 'routes DELETE /delete-team/:id to the teams#destroy action' do
-    expect(delete('/delete-team/1')).to route_to(
+  it 'routes DELETE /teams/:id to the teams#destroy action' do
+    expect(delete('/teams/1')).to route_to(
       controller: 'teams',
       action: 'destroy',
       id: '1'
     )
   end
 
-  it 'routes PATCH /update-team/:id to the teams#update action' do
-    expect(patch('/change-password/1')).to route_to(
+  it 'routes PATCH /teams/:id to the teams#update action' do
+    expect(patch('/teams/1')).to route_to(
       controller: 'teams',
       action: 'update',
       id: '1'
