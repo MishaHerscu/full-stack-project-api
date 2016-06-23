@@ -15,7 +15,7 @@ RSpec.describe 'routes for teams' do
 
   it 'routes PATCH /update-team/:id to the teams#update action' do
     expect(patch('/change-password/1')).to route_to(
-      controller: 'users',
+      controller: 'teams',
       action: 'update',
       id: '1'
     )
