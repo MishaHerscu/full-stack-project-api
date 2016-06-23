@@ -17,6 +17,20 @@
 #                password_confirmation: nil)
 # end
 
+Team.create(
+  [
+    {
+      name: 'Weapon X'
+    },
+    {
+      name: 'Blue'
+    },
+    {
+      name: 'Green'
+    }
+  ]
+)
+
 Player.create(
   [
     {
@@ -35,21 +49,25 @@ Player.create(
       phone_number: '555-555-5555',
       captain: 'no',
       team_id: 1,
-      user_id: 1
-    }
-  ]
-)
-
-Team.create(
-  [
-    {
-      name: 'Weapon X'
+      user_id: 2
     },
     {
-      name: 'Blue'
+      surname: 'Markette',
+      given_name: 'Joshua',
+      email: 'josh@gmail.com',
+      phone_number: '111-111-1111',
+      captain: 'yes',
+      team_id: 2,
+      user_id: 3
     },
     {
-      name: 'Green'
+      surname: 'Taytay',
+      given_name: 'Jake',
+      email: 'jake@gmail.com',
+      phone_number: '222-222-2222',
+      captain: 'no',
+      team_id: 2,
+      user_id: 4
     }
   ]
 )
