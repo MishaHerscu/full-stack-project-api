@@ -1,21 +1,21 @@
 require 'rails_helper'
 
-RSpec.describe UsersController do
-  def user_params
+RSpec.describe GamesController do
+  def game_params
     {
-      email: 'alice@example.com',
-      password: 'foobarbaz',
-      password_confirmation: 'foobarbaz'
+      date: '2016-11-15',
+      winner: 1,
+      loser: 2
     }
   end
 
   after(:each) do
-    User.delete_all
+    Game.delete_all
   end
 
-  describe 'POST signup' do
+  describe 'POST new game' do
     before(:each) do
-      post :signup, { credentials: user_params }, format: :json
+      post :newgame, { credentials: game_params }, format: :json
     end
 
     it 'is successful' do
@@ -28,10 +28,50 @@ RSpec.describe UsersController do
     end
   end
 
-  describe 'POST signin' do
+  describe 'PATCH change game' do
+    def new_game_params
+      {
+        old_date: '2016-11-10',
+        new_date: '2016-12-10',
+        old_winner: 'foobar',
+        new_winner: 'foobarbaz',
+        old_loser: 'foobarbaz',
+        new_loser: 'foobarbazqux'
+      }
+    end
+
     before(:each) do
-      post :signup, { credentials: user_params }, format: :json
-      post :signin, { credentials: user_params }, format: :json
+      patch :change_game,
+            { id: @game_id, details: new_game_params },
+            format: :json
+    end
+
+    it 'is successful' do
+      expect(response).to be_successful
+    end
+
+    it 'renders no response body' do
+      expect(response.body).to be_empty
+    end
+  end
+
+  describe 'DELETE game' do
+    before(:each) do
+      delete :delete_game, id: @game_id, format: :json
+    end
+
+    it 'is successful' do
+      expect(response).to be_successful
+    end
+
+    it 'renders no response body' do
+      expect(response.body).to be_empty
+    end
+  end
+
+  describe 'GET index' do
+    before(:each) do
+      get :index, format: :json
     end
 
     it 'is successful' do
@@ -44,82 +84,18 @@ RSpec.describe UsersController do
     end
   end
 
-  context 'when authenticated' do
+  describe 'GET show' do
     before(:each) do
-      post :signup, { credentials: user_params }, format: :json
-      post :signin, { credentials: user_params }, format: :json
-
-      @token = JSON.parse(response.body)['user']['token']
-      request.env['HTTP_AUTHORIZATION'] = "Token token=#{@token}"
-
-      @user_id = JSON.parse(response.body)['user']['id']
+      get :index, id: @game_id, format: :json
     end
 
-    describe 'PATCH changepw' do
-      def new_password_params
-        {
-          old: 'foobarbaz',
-          new: 'foobarbazqux'
-        }
-      end
-
-      before(:each) do
-        patch :changepw,
-              { id: @user_id, passwords: new_password_params },
-              format: :json
-      end
-
-      it 'is successful' do
-        expect(response).to be_successful
-      end
-
-      it 'renders no response body' do
-        expect(response.body).to be_empty
-      end
+    it 'is successful' do
+      expect(response).to be_successful
     end
 
-    describe 'DELETE signout' do
-      before(:each) do
-        delete :signout, id: @user_id, format: :json
-      end
-
-      it 'is successful' do
-        expect(response).to be_successful
-      end
-
-      it 'renders no response body' do
-        expect(response.body).to be_empty
-      end
-    end
-
-    describe 'GET index' do
-      before(:each) do
-        get :index, format: :json
-      end
-
-      it 'is successful' do
-        expect(response).to be_successful
-      end
-
-      it 'renders a JSON response' do
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).not_to be_nil
-      end
-    end
-
-    describe 'GET show' do
-      before(:each) do
-        get :index, id: @user_id, format: :json
-      end
-
-      it 'is successful' do
-        expect(response).to be_successful
-      end
-
-      it 'renders a JSON response' do
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).not_to be_nil
-      end
+    it 'renders a JSON response' do
+      parsed_response = JSON.parse(response.body)
+      expect(parsed_response).not_to be_nil
     end
   end
 end

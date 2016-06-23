@@ -1,21 +1,19 @@
 require 'rails_helper'
 
-RSpec.describe UsersController do
-  def user_params
+RSpec.describe TeamsController do
+  def team_params
     {
-      email: 'alice@example.com',
-      password: 'foobarbaz',
-      password_confirmation: 'foobarbaz'
+      name: 'Weapon X'
     }
   end
 
   after(:each) do
-    User.delete_all
+    Team.delete_all
   end
 
-  describe 'POST signup' do
+  describe 'POST new team' do
     before(:each) do
-      post :signup, { credentials: user_params }, format: :json
+      post :newteam, { credentials: team_params }, format: :json
     end
 
     it 'is successful' do
@@ -28,10 +26,23 @@ RSpec.describe UsersController do
     end
   end
 
-  describe 'POST signin' do
+  describe 'DELETE delete team' do
     before(:each) do
-      post :signup, { credentials: user_params }, format: :json
-      post :signin, { credentials: user_params }, format: :json
+      delete :delete_team, id: @team_id, format: :json
+    end
+
+    it 'is successful' do
+      expect(response).to be_successful
+    end
+
+    it 'renders no response body' do
+      expect(response.body).to be_empty
+    end
+  end
+
+  describe 'GET index' do
+    before(:each) do
+      get :index, format: :json
     end
 
     it 'is successful' do
@@ -44,82 +55,18 @@ RSpec.describe UsersController do
     end
   end
 
-  context 'when authenticated' do
+  describe 'GET show' do
     before(:each) do
-      post :signup, { credentials: user_params }, format: :json
-      post :signin, { credentials: user_params }, format: :json
-
-      @token = JSON.parse(response.body)['user']['token']
-      request.env['HTTP_AUTHORIZATION'] = "Token token=#{@token}"
-
-      @user_id = JSON.parse(response.body)['user']['id']
+      get :index, id: @team_id, format: :json
     end
 
-    describe 'PATCH changepw' do
-      def new_password_params
-        {
-          old: 'foobarbaz',
-          new: 'foobarbazqux'
-        }
-      end
-
-      before(:each) do
-        patch :changepw,
-              { id: @user_id, passwords: new_password_params },
-              format: :json
-      end
-
-      it 'is successful' do
-        expect(response).to be_successful
-      end
-
-      it 'renders no response body' do
-        expect(response.body).to be_empty
-      end
+    it 'is successful' do
+      expect(response).to be_successful
     end
 
-    describe 'DELETE signout' do
-      before(:each) do
-        delete :signout, id: @user_id, format: :json
-      end
-
-      it 'is successful' do
-        expect(response).to be_successful
-      end
-
-      it 'renders no response body' do
-        expect(response.body).to be_empty
-      end
-    end
-
-    describe 'GET index' do
-      before(:each) do
-        get :index, format: :json
-      end
-
-      it 'is successful' do
-        expect(response).to be_successful
-      end
-
-      it 'renders a JSON response' do
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).not_to be_nil
-      end
-    end
-
-    describe 'GET show' do
-      before(:each) do
-        get :index, id: @user_id, format: :json
-      end
-
-      it 'is successful' do
-        expect(response).to be_successful
-      end
-
-      it 'renders a JSON response' do
-        parsed_response = JSON.parse(response.body)
-        expect(parsed_response).not_to be_nil
-      end
+    it 'renders a JSON response' do
+      parsed_response = JSON.parse(response.body)
+      expect(parsed_response).not_to be_nil
     end
   end
 end
