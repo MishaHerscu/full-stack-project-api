@@ -31,12 +31,9 @@ RSpec.describe GamesController do
   describe 'PATCH change game' do
     def new_game_params
       {
-        old_date: '2016-11-10',
-        new_date: '2016-12-10',
-        old_winner: 'foobar',
-        new_winner: 'foobarbaz',
-        old_loser: 'foobarbaz',
-        new_loser: 'foobarbazqux'
+        date: '2016-12-10',
+        winner: 2,
+        loser: 1
       }
     end
 
