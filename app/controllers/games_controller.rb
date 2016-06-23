@@ -1,3 +1,4 @@
+#
 class GamesController < ApplicationController
   before_action :set_game, only: [:show, :update, :destroy]
 
@@ -49,11 +50,11 @@ class GamesController < ApplicationController
 
   private
 
-    def set_game
-      @game = Game.find(params[:id])
-    end
+  def set_game
+    @game = Game.find(params[:id])
+  end
 
-    def game_params
-      params.require(:game).permit(:date, :team_id)
-    end
+  def game_params
+    params.require(:game).permit(:date, :team_id)
+  end
 end

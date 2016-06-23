@@ -1,3 +1,4 @@
+#
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :update, :destroy]
 
@@ -49,11 +50,11 @@ class TeamsController < ApplicationController
 
   private
 
-    def set_team
-      @team = Team.find(params[:id])
-    end
+  def set_team
+    @team = Team.find(params[:id])
+  end
 
-    def team_params
-      params.require(:team).permit(:name)
-    end
+  def team_params
+    params.require(:team).permit(:name)
+  end
 end
