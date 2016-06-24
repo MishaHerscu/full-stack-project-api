@@ -39,13 +39,9 @@ RSpec.describe Player do
     }
   end
 
-  def make_dependency_objects
+  before(:all) do
     User.create!(user_params)
     Team.create!(team_params)
-  end
-
-  before(:all) do
-    make_dependency_objects
     Player.create!(player_params)
   end
 
