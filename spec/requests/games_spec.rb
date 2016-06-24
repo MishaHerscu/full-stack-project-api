@@ -9,6 +9,26 @@ RSpec.describe 'Games API' do
     }
   end
 
+  def games_user_params
+    {
+      email: 'game_user@example.com',
+      password: 'foobarbaz_game',
+      password_confirmation: 'foobarbaz_game'
+    }
+  end
+
+  before(:all) do
+    User.create!(game_user_params)
+    post :signin, { credentials: games_user_params }, format: :json
+    @token = JSON.parse(response.body)['user']['token']
+    request.env['HTTP_AUTHORIZATION'] = "Token token=#{@token}"
+    @user_id = JSON.parse(response.body)['user']['id']
+  end
+
+  after(:all) do
+    User.delete_all
+  end
+
   after(:each) do
     Game.delete_all
   end

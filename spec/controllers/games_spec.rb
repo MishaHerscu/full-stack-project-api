@@ -9,6 +9,25 @@ RSpec.describe GamesController do
     }
   end
 
+  def games_user_params
+    {
+      email: 'game_user_2@example.com',
+      password: 'foobarbaz_game_2',
+      password_confirmation: 'foobarbaz_game_2'
+    }
+  end
+
+  before(:all) do
+    User.create!(games_user_params)
+    post '/sign-in', { credentials: games_user_params }, format: :json
+    @current_user = User.find_by email: games_user_params[:email]
+    @token = @current_user[:token]
+  end
+
+  after(:all) do
+    User.delete_all
+  end
+
   def game
     Game.first
   end
