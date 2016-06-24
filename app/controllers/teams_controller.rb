@@ -1,7 +1,7 @@
 #
-class TeamsController < ApplicationController
+class TeamsController < ProtectedController
   before_action :set_team, only: [:show, :update, :destroy]
-  # skip_before_action :authenticate, only: [:index, :show] # not needed?
+  skip_before_action :authenticate, only: [:index, :show] # not needed?
 
   # GET /teams
   # GET /teams.json

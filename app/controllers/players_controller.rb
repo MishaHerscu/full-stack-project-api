@@ -1,7 +1,7 @@
 #
-class PlayersController < ApplicationController
+class PlayersController < ProtectedController
   before_action :set_player, only: [:show, :update, :destroy]
-  # skip_before_action :authenticate, only: [:index, :show] # not needed?
+  skip_before_action :authenticate, only: [:index, :show] # not needed?
 
   # GET /players
   # GET /players.json
