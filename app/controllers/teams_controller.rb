@@ -59,5 +59,10 @@ class TeamsController < ApplicationController
     params.require(:team).permit(:name)
   end
 
-  private :set_team, :team_params
+  def user_creds
+    params.require(:credentials)
+          .permit(:email, :password, :password_confirmation)
+  end
+
+  private :set_team, :team_params, :user_creds
 end
