@@ -27,6 +27,7 @@ RSpec.describe 'Players API' do
     before(:each) do
       post '/players', player: player_params
 
+      @token = current_user[:token]
       @players = JSON.parse(response.body)
       @player_id = JSON.parse(response.body)['player']['id']
     end

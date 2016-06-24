@@ -21,6 +21,7 @@ RSpec.describe 'Teams API' do
     before(:each) do
       post '/teams', team: team_params
 
+      @token = current_user[:token]
       @team = JSON.parse(response.body)
       @team_id = @team['id']
     end
