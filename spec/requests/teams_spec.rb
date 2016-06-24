@@ -21,8 +21,8 @@ RSpec.describe 'Teams API' do
     before(:each) do
       post '/teams', team: team_params
 
-      @teams = JSON.parse(response.body)
-      @team_id = JSON.parse(response.body)['teams']['id']
+      @team = JSON.parse(response.body)
+      @team_id = @team['id']
     end
 
     describe 'GET /teams' do
@@ -46,7 +46,7 @@ RSpec.describe 'Teams API' do
 
         parsed_response = JSON.parse(response.body)
         expect(
-          parsed_response['team']
+          parsed_response['teams']
         ).not_to be_empty
       end
     end
