@@ -1,6 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe PlayersController do
+  def team_id
+    Team.last.id
+  end
+
+  def user_id
+    User.last.id
+  end
+
   def player_params
     {
       surname: 'Herscu',
@@ -8,41 +16,41 @@ RSpec.describe PlayersController do
       email: 'mishaherscu@gmail.com',
       phone_number: '413-320-6636',
       captain: 'yes',
-      team_id: '',
-      user_id: ''
+      team_id: team_id,
+      user_id: user_id
     }
   end
 
   # I had used: Player.first.id
 
-  # def team_params
-  #   {
-  #     name: 'Weapon X'
-  #   }
-  # end
-  #
-  # def user_params
-  #   {
-  #     email: 'misha@example.com',
-  #     password: 'foobartwo',
-  #     password_confirmation: 'foobartwo'
-  #   }
-  # end
+  def team_params
+    {
+      name: 'Weapon X'
+    }
+  end
+
+  def user_params
+    {
+      email: 'misha@example.com',
+      password: 'foobartwo',
+      password_confirmation: 'foobartwo'
+    }
+  end
 
   def player
-    Player.first
+    Player.last
   end
 
   before(:all) do
-    # User.create!(user_params)
-    # Team.create!(team_params)
+    User.create!(user_params)
+    Team.create!(team_params)
     Player.create!(player_params)
   end
 
   after(:all) do
-    # User.last.delete
-    # Team.last.delete
-    Player.last.delete
+    User.delete_all
+    Team.delete_all
+    Player.delete_all
   end
 
   describe 'POST new player' do
@@ -60,7 +68,7 @@ RSpec.describe PlayersController do
     end
   end
 
-  describe 'PATCH update profile info' do
+  describe 'PATCH update player info' do
     def new_player_params
       {
         surname: 'Herscu',
@@ -68,8 +76,8 @@ RSpec.describe PlayersController do
         email: 'mishaherscu@gmail.com',
         phone_number: '413-320-6636',
         captain: 'no',
-        team_id: '',
-        user_id: ''
+        team_id: team_id,
+        user_id: user_id
       }
     end
 

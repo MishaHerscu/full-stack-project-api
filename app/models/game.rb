@@ -1,5 +1,5 @@
 #
 class Game < ActiveRecord::Base
-  include Authentication
+  # include Authentication
   belongs_to :team, inverse_of: :games
 end
