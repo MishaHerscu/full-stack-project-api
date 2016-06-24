@@ -8,39 +8,41 @@ RSpec.describe PlayersController do
       email: 'mishaherscu@gmail.com',
       phone_number: '413-320-6636',
       captain: 'yes',
-      team_id: Team.first.id,
-      user_id: User.first.id
+      team_id: '',
+      user_id: ''
     }
   end
 
-  def team_params
-    {
-      name: 'Weapon XI'
-    }
-  end
+  # I had used: Player.first.id
 
-  def user_params
-    {
-      email: 'alice@example.com',
-      password: 'foobarbaz',
-      password_confirmation: 'foobarbaz'
-    }
-  end
+  # def team_params
+  #   {
+  #     name: 'Weapon X'
+  #   }
+  # end
+  #
+  # def user_params
+  #   {
+  #     email: 'misha@example.com',
+  #     password: 'foobartwo',
+  #     password_confirmation: 'foobartwo'
+  #   }
+  # end
 
   def player
     Player.first
   end
 
   before(:all) do
-    User.create(user_params)
-    Team.create(team_params)
-    Player.create(player_params)
+    # User.create!(user_params)
+    # Team.create!(team_params)
+    Player.create!(player_params)
   end
 
   after(:all) do
-    User.delete_all
-    Team.delete_all
-    Player.delete_all
+    # User.last.delete
+    # Team.last.delete
+    Player.last.delete
   end
 
   describe 'POST new player' do
@@ -66,8 +68,8 @@ RSpec.describe PlayersController do
         email: 'mishaherscu@gmail.com',
         phone_number: '413-320-6636',
         captain: 'no',
-        team_id: Team.last.id,
-        user_id: User.first.id
+        team_id: '',
+        user_id: ''
       }
     end
 
