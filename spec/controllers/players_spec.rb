@@ -13,15 +13,33 @@ RSpec.describe PlayersController do
     }
   end
 
+  def team_params
+    {
+      name: 'Weapon XI'
+    }
+  end
+
+  def user_params
+    {
+      email: 'alice@example.com',
+      password: 'foobarbaz',
+      password_confirmation: 'foobarbaz'
+    }
+  end
+
   def player
     Player.first
   end
 
   before(:all) do
+    User.create(user_params)
+    Team.create(team_params)
     Player.create(player_params)
   end
 
   after(:all) do
+    User.delete_all
+    Team.delete_all
     Player.delete_all
   end
 
