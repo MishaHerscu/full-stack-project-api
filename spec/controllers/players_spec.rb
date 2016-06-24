@@ -30,8 +30,10 @@ RSpec.describe PlayersController do
   end
 
   def user_params
+    # email_address = 'misha' + (user_id + 1).to_s + '@gmail.com'
+    email_address = 'mishamisha2@misha.com'
     {
-      email: 'misha@example.com',
+      email: email_address,
       password: 'foobartwo',
       password_confirmation: 'foobartwo'
     }
@@ -48,9 +50,9 @@ RSpec.describe PlayersController do
   end
 
   after(:all) do
+    Player.delete_all
     User.delete_all
     Team.delete_all
-    Player.delete_all
   end
 
   describe 'POST new player' do
