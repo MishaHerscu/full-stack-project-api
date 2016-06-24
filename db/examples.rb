@@ -9,7 +9,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-%w(misha cooper josh jake).each do |name|
+%w(misha cooper josh jake jacob tyler).each do |name|
   email = "#{name}@#{name}.com"
   next if User.exists? email: email
   User.create!(email: email,
@@ -27,6 +27,9 @@ Team.create(
     },
     {
       name: 'Green'
+    },
+    {
+      name: 'Red'
     }
   ]
 )
@@ -36,7 +39,7 @@ Player.create(
     {
       surname: 'Herscu',
       given_name: 'Misha',
-      email: 'mishaherscu@gmail.com',
+      email: 'misha@misha.com',
       phone_number: '413-320-6636',
       captain: 'yes',
       team_id: 1,
@@ -46,7 +49,7 @@ Player.create(
       surname: 'Cooper',
       given_name: 'Alex',
       email: 'cooper@gmail.com',
-      phone_number: '555-555-5555',
+      phone_number: '111-111-1111',
       captain: 'no',
       team_id: 1,
       user_id: 2
@@ -55,7 +58,7 @@ Player.create(
       surname: 'Markette',
       given_name: 'Joshua',
       email: 'josh@gmail.com',
-      phone_number: '111-111-1111',
+      phone_number: '222-222-2222',
       captain: 'yes',
       team_id: 2,
       user_id: 3
@@ -64,10 +67,28 @@ Player.create(
       surname: 'Taytay',
       given_name: 'Jake',
       email: 'jake@gmail.com',
-      phone_number: '222-222-2222',
+      phone_number: '333-333-3333',
       captain: 'no',
       team_id: 2,
       user_id: 4
+    },
+    {
+      surname: 'Luria',
+      given_name: 'Jacob',
+      email: 'jacob@gmail.com',
+      phone_number: '444-444-4444',
+      captain: 'yes',
+      team_id: 3,
+      user_id: 5
+    },
+    {
+      surname: 'Chan',
+      given_name: 'Tyler',
+      email: 'Ty@gmail.com',
+      phone_number: '555-555-5555',
+      captain: 'no',
+      team_id: 3,
+      user_id: 6
     }
   ]
 )
@@ -81,10 +102,16 @@ Game.create(
       team_id: 1
     },
     {
-      date: '2016-10-10',
+      date: '2016-11-02',
       opponent: 'Green',
       won: 'false',
       team_id: 1
+    },
+    {
+      date: '2016-11-10',
+      opponent: 'Green',
+      won: 'false',
+      team_id: 2
     }
   ]
 )
