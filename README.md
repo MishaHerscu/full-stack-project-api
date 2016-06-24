@@ -13,3 +13,5 @@ Planning materials include:
 -   [Entity Relationship Diagrams](https://docs.google.com/presentation/d/1BOGbfmI83B_1m01WShrJhBrsV7Fn3LDhZg7VZb5yiz0/edit?usp=sharing)
 
 The client repo is [here](https://github.com/MishaHerscu/full-stack-project-client).
+
+The application is [here](https://mishaherscu.github.io/full-stack-project-client/).
