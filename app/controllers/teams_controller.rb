@@ -1,6 +1,7 @@
 #
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :update, :destroy]
+  skip_before_action :authenticate, only: [:index, :show]
 
   # GET /teams
   # GET /teams.json

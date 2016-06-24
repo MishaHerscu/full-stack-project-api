@@ -1,6 +1,7 @@
 #
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :update, :destroy]
+  skip_before_action :authenticate, only: [:index, :show]
 
   # GET /players
   # GET /players.json
