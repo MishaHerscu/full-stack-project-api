@@ -8,8 +8,8 @@ RSpec.describe PlayersController do
       email: 'mishaherscu@gmail.com',
       phone_number: '413-320-6636',
       captain: 'yes',
-      team_id: '',
-      user_id: ''
+      team_id: Team.first.id,
+      user_id: User.first.id
     }
   end
 
@@ -48,8 +48,8 @@ RSpec.describe PlayersController do
         email: 'mishaherscu@gmail.com',
         phone_number: '413-320-6636',
         captain: 'no',
-        team_id: 1,
-        user_id: 1
+        team_id: Team.last.id,
+        user_id: User.first.id
       }
     end
 
