@@ -79,10 +79,5 @@ class PlayersController < ApplicationController
                                    :captain, :team_id, :user_id)
   end
 
-  def user_creds
-    params.require(:credentials)
-          .permit(:email, :password, :password_confirmation)
-  end
-
-  private :set_player, :update_player, :player_params, :user_creds
+  private :set_player, :update_player, :player_params
 end

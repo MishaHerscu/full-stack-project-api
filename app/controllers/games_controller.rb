@@ -65,10 +65,5 @@ class GamesController < ApplicationController
     params.require(:game).permit(:date, :opponent, :won)
   end
 
-  def user_creds
-    params.require(:credentials)
-          .permit(:email, :password, :password_confirmation)
-  end
-
-  private :set_game, :update_game, :game_params, :user_creds
+  private :set_game, :update_game, :game_params
 end
