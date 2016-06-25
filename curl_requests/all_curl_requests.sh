@@ -39,3 +39,24 @@ curl --include --request PATCH http://localhost:3000/games/1 \
       "won": "false"
     }
 }'
+
+# successful GETs
+curl --include --request GET https://ironsidegoaltimate.herokuapp.com/games
+curl --include --request GET https://ironsidegoaltimate.herokuapp.com/teams
+curl --include --request GET https://ironsidegoaltimate.herokuapp.com/players
+
+# correct POST still fails (probably because no current_user)
+curl --include --request POST https://ironsidegoaltimate.herokuapp.com/players \
+--header "Content-Type: application/json" \
+--header "authToken: 3ba1dab9a1b51d893a033472bcd7c46a" \
+--data '{
+    "player": {
+      "surname": "hersc",
+      "given_name": "mish",
+      "email": "hersc@herc",
+      "phone_number": "999-999-9999",
+      "captain": "no",
+      "team_id": "1",
+      "user_id": "1"
+    }
+}'
