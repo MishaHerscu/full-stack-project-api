@@ -34,10 +34,15 @@ class TeamsController < ProtectedController
   def update
     @team = Team.find(params[:id])
 
-    if @team.update(team_params)
-      head :no_content
-    else
-      render json: @team.errors, status: :unprocessable_entity
+    # @current_player = current_user.players.find
+    # @current_team = @current_player.teams.find
+
+    if @team.id == @current_user.id
+      if @team.update(team_params)
+        head :no_content
+      else
+        render json: @team.errors, status: :unprocessable_entity
+      end
     end
   end
 

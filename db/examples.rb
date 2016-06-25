@@ -102,16 +102,58 @@ Game.create(
       team_id: 1
     },
     {
-      date: '2016-11-02',
+      date: '2016-10-10',
+      opponent: 'Weapon X',
+      won: 'false',
+      team_id: 2
+    },
+    {
+      date: '2016-10-10',
+      opponent: 'Green',
+      won: 'false',
+      team_id: 3
+    },
+    {
+      date: '2016-10-10',
+      opponent: 'Red',
+      won: 'true',
+      team_id: 4
+    },
+    {
+      date: '2016-11-10',
       opponent: 'Green',
       won: 'false',
       team_id: 1
     },
     {
       date: '2016-11-10',
-      opponent: 'Green',
+      opponent: 'Weapon X',
       won: 'false',
       team_id: 2
+    },
+    {
+      date: '2016-11-10',
+      opponent: 'Red',
+      won: 'true',
+      team_id: 3
+    },
+    {
+      date: '2016-11-10',
+      opponent: 'Blue',
+      won: 'false',
+      team_id: 4
+    },
+    {
+      date: '2016-12-10',
+      opponent: 'Red',
+      won: 'false',
+      team_id: 1
+    },
+    {
+      date: '2016-12-10',
+      opponent: 'Weapon X',
+      won: 'true',
+      team_id: 4
     }
   ]
 )
