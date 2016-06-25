@@ -9,7 +9,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-%w(misha cooper josh jake jacob tyler).each do |name|
+%w(misha cooper josh jake jacob tyler mh mhh).each do |name|
   email = "#{name}@#{name}.com"
   next if User.exists? email: email
   User.create!(email: email,
@@ -89,6 +89,24 @@ Player.create(
       captain: 'no',
       team_id: 3,
       user_id: 6
+    },
+    {
+      surname: 'mh',
+      given_name: 'mh',
+      email: 'mh@mh.com',
+      phone_number: '666-666-6666',
+      captain: 'no',
+      team_id: 1,
+      user_id: 7
+    },
+    {
+      surname: 'mhh',
+      given_name: 'mhh',
+      email: 'mhh@mhh.com',
+      phone_number: '777-777-7777',
+      captain: 'no',
+      team_id: 2,
+      user_id: 8
     }
   ]
 )
