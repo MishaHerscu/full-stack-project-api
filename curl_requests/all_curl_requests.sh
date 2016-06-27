@@ -4,6 +4,7 @@
 
 # get all
 curl --include --request GET http://localhost:3000/games
+curl --include --request GET https://ironsidegoaltimate.herokuapp.com/players
 
 # failing PATCH - no token
 curl --include --request PATCH http://localhost:3000/games/1 \
