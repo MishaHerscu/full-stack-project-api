@@ -1,5 +1,6 @@
 #
 class UsersController < ProtectedController
+  before_action :set_user, only: [:show, :update, :destroy]
   skip_before_action :authenticate, only: [:signup, :signin]
 
   # POST '/sign-up'
@@ -25,7 +26,7 @@ class UsersController < ProtectedController
 
   # DELETE '/sign-out/1'
   def signout
-    if current_user == User.find(params[:id])
+    if current_user == @user
       current_user.logout
       head :no_content
     else
@@ -49,8 +50,8 @@ class UsersController < ProtectedController
   end
 
   def show
-    user = User.find(params[:id])
-    render json: user
+    # user = User.find(params[:id])
+    render json: @user
   end
 
   def update
@@ -60,12 +61,17 @@ class UsersController < ProtectedController
   # DELETE /user/1
   # DELETE /user/1.json
   def destroy
+    # user = User.find(params[:id])
     @user.destroy
 
     head :no_content
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_creds
     params.require(:credentials)
