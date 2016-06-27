@@ -31,24 +31,10 @@ class PlayersController < ProtectedController
 
   # PATCH/PUT /players/1
   # PATCH/PUT /players/1.json
-  def update_foreign_keys
-    @player[:team_id] = update_player[:team_id]
-    @player[:user_id] = update_player[:user_id]
-  end
-
-  def update_attributes
-    @player[:surname] = update_player[:surname]
-    @player[:given_name] = update_player[:given_name]
-    @player[:email] = update_player[:email]
-    @player[:phone_number] = update_player[:phone_number]
-    @player[:captain] = update_player[:captain]
-  end
-
   def update
     @player = Player.find(params[:id])
-    if @player
-      update_attributes
-      update_foreign_keys
+    if @player.update(update_player)
+      head :no_content
     else
       render json: @player.errors, status: :unprocessable_entity
     end
@@ -69,9 +55,9 @@ class PlayersController < ProtectedController
   end
 
   def update_player
-    params.require(:new_player_details).permit(:surname, :given_name, :email,
-                                               :phone_number, :captain,
-                                               :team_id, :user_id)
+    params.require(:newPlayerDetails).permit(:surname, :given_name, :email,
+                                             :phone_number, :captain,
+                                             :team_id, :user_id)
   end
 
   def player_params

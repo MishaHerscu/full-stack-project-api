@@ -34,10 +34,8 @@ class GamesController < ProtectedController
   def update
     @game = Game.find(params[:id])
 
-    if @game
-      @game[:date] = update_game[:date]
-      @game[:opponent] = update_game[:opponent]
-      @game[:won] = update_game[:won]
+    if @game.update(update_game)
+      head :no_content
     else
       render json: @game.errors, status: :unprocessable_entity
     end
