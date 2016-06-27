@@ -60,7 +60,7 @@ class GamesController < ProtectedController
   end
 
   def game_params
-    params.require(:game).permit(:date, :opponent, :won, :team)
+    params.require(:game).permit(:date, :opponent, :won, :team_id)
   end
 
   private :set_game, :update_game, :game_params
