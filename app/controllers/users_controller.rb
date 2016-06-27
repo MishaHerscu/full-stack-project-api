@@ -57,6 +57,14 @@ class UsersController < ProtectedController
     head :bad_request
   end
 
+  # DELETE /user/1
+  # DELETE /user/1.json
+  def destroy
+    @user.destroy
+
+    head :no_content
+  end
+
   private
 
   def user_creds
