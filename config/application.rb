@@ -38,7 +38,7 @@ module MyProject
     # source for this code: https://demisx.github.io/rails-api/2014/02/18/configure-accept-headers-cors.html
     # in config/application.rb
     config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => 'http://localhost:8080/',
+      'Access-Control-Allow-Origin' => 'https://mishaherscu.github.io/full-stack-project-client/',
       'Access-Control-Request-Method' => %w('GET' 'POST' 'PATCH' 'DELETE')
                                              .join(',')
     }
