@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attendances, except: [:new, :edit]
   resources :assists, except: [:new, :edit]
   resources :goals, except: [:new, :edit]
   resources :games, except: [:new, :edit]
