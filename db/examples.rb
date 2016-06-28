@@ -13,8 +13,8 @@
   email = "#{name}@#{name}.com"
   next if User.exists? email: email
   User.create!(email: email,
-               password: 'abc123',
-               password_confirmation: 'abc123')
+               password: '123',
+               password_confirmation: '123')
 end
 
 Team.create(
@@ -172,6 +172,200 @@ Game.create(
       opponent: 'Weapon X',
       won: 'true',
       team_id: 4
+    }
+  ]
+)
+
+Goal.create(
+  [
+    {
+      player_id: 1,
+      game_id: 1
+    },
+    {
+      player_id: 1,
+      game_id: 2
+    },
+    {
+      player_id: 1,
+      game_id: 3
+    },
+    {
+      player_id: 2,
+      game_id: 1
+    },
+    {
+      player_id: 2,
+      game_id: 3
+    },
+    {
+      player_id: 3,
+      game_id: 4
+    },
+    {
+      player_id: 3,
+      game_id: 3
+    },
+    {
+      player_id: 4,
+      game_id: 6
+    },
+    {
+      player_id: 4,
+      game_id: 2
+    },
+    {
+      player_id: 5,
+      game_id: 1
+    },
+    {
+      player_id: 5,
+      game_id: 2
+    },
+    {
+      player_id: 6,
+      game_id: 2
+    },
+    {
+      player_id: 6,
+      game_id: 2
+    },
+    {
+      player_id: 6,
+      game_id: 3
+    },
+    {
+      player_id: 7,
+      game_id: 4
+    },
+    {
+      player_id: 7,
+      game_id: 4
+    },
+    {
+      player_id: 1,
+      game_id: 9
+    },
+    {
+      player_id: 2,
+      game_id: 8
+    },
+    {
+      player_id: 2,
+      game_id: 7
+    },
+    {
+      player_id: 2,
+      game_id: 2
+    },
+    {
+      player_id: 1,
+      game_id: 6
+    },
+    {
+      player_id: 1,
+      game_id: 4
+    },
+    {
+      player_id: 1,
+      game_id: 5
+    }
+  ]
+)
+
+Assist.create(
+  [
+    {
+      player_id: 1,
+      game_id: 1
+    },
+    {
+      player_id: 1,
+      game_id: 2
+    },
+    {
+      player_id: 1,
+      game_id: 3
+    },
+    {
+      player_id: 2,
+      game_id: 1
+    },
+    {
+      player_id: 2,
+      game_id: 3
+    },
+    {
+      player_id: 3,
+      game_id: 4
+    },
+    {
+      player_id: 3,
+      game_id: 3
+    },
+    {
+      player_id: 4,
+      game_id: 6
+    },
+    {
+      player_id: 4,
+      game_id: 2
+    },
+    {
+      player_id: 5,
+      game_id: 1
+    },
+    {
+      player_id: 5,
+      game_id: 2
+    },
+    {
+      player_id: 6,
+      game_id: 2
+    },
+    {
+      player_id: 6,
+      game_id: 2
+    },
+    {
+      player_id: 6,
+      game_id: 3
+    },
+    {
+      player_id: 7,
+      game_id: 4
+    },
+    {
+      player_id: 7,
+      game_id: 4
+    },
+    {
+      player_id: 1,
+      game_id: 9
+    },
+    {
+      player_id: 2,
+      game_id: 8
+    },
+    {
+      player_id: 2,
+      game_id: 7
+    },
+    {
+      player_id: 2,
+      game_id: 2
+    },
+    {
+      player_id: 1,
+      game_id: 6
+    },
+    {
+      player_id: 1,
+      game_id: 4
+    },
+    {
+      player_id: 1,
+      game_id: 5
     }
   ]
 )
