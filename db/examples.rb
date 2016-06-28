@@ -369,3 +369,14 @@ Assist.create(
     }
   ]
 )
+
+Game.all do |game|
+  Player.all do |player|
+    if player.team_id == game.team_id || player.team_id == game.opponent_id
+      Attendance.create(
+        player_id: player.id,
+        game_id: game.id
+      )
+    end
+  end
+end
