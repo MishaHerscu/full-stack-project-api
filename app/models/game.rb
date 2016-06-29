@@ -1,6 +1,6 @@
 #
 class Game < ActiveRecord::Base
-  belongs_to :team, inverse_of: :games, dependent: :destroy
+  belongs_to :team, inverse_of: :games
   has_many :goals, inverse_of: :game, dependent: :destroy
   has_many :assists, inverse_of: :game, dependent: :destroy
   has_many :attendances, inverse_of: :game, dependent: :destroy
