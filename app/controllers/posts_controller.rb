@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where(player_id: current_user.player.id)
+    @posts = Post.where(team_id: current_user.player.team_id)
 
     render json: @posts
   end
