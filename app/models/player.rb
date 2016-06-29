@@ -5,4 +5,5 @@ class Player < ActiveRecord::Base
   has_many :goals, inverse_of: :player, dependent: :destroy
   has_many :assists, inverse_of: :player, dependent: :destroy
   has_many :attendances, inverse_of: :player, dependent: :destroy
+  has_many :posts, inverse_of: :player, dependent: :destroy
 end
