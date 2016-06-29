@@ -1,6 +1,7 @@
 #
-class AttendancesController < ApplicationController
+class AttendancesController < ProtectedController
   before_action :set_attendance, only: [:show, :update, :destroy]
+  before_action :authenticate, only: [:update, :create, :destroy]
 
   # GET /attendances
   # GET /attendances.json

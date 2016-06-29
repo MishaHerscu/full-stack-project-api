@@ -1,6 +1,7 @@
 #
-class GoalsController < ApplicationController
+class GoalsController < ProtectedController
   before_action :set_goal, only: [:show, :update, :destroy]
+  before_action :authenticate, only: [:update, :create, :destroy]
 
   # GET /goals
   # GET /goals.json

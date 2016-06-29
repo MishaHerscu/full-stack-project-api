@@ -1,6 +1,7 @@
 #
-class AssistsController < ApplicationController
+class AssistsController < ProtectedController
   before_action :set_assist, only: [:show, :update, :destroy]
+  before_action :authenticate, only: [:update, :create, :destroy]
 
   # GET /assists
   # GET /assists.json
