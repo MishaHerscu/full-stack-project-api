@@ -380,3 +380,28 @@ Game.all.each do |game|
     )
   end
 end
+
+Post.create(
+  [
+    {
+      player_id: 1,
+      team_id: 1,
+      content: 'test 1'
+    },
+    {
+      player_id: 2,
+      team_id: 1,
+      content: 'test 2'
+    },
+    {
+      player_id: 3,
+      team_id: 2,
+      content: 'test 3'
+    },
+    {
+      player_id: 4,
+      team_id: 2,
+      content: 'test 4'
+    }
+  ]
+)
