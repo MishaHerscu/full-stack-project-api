@@ -1,6 +1,7 @@
 #
-class GoalsController < ApplicationController
+class GoalsController < ProtectedController
   before_action :set_goal, only: [:show, :update, :destroy]
+  before_action :authenticate, only: [:update, :create, :destroy]
 
   # GET /goals
   # GET /goals.json
@@ -19,30 +20,35 @@ class GoalsController < ApplicationController
   # POST /goals
   # POST /goals.json
   def create
-    @goal = Goal.new(goal_params)
+    if current_user.admin == 'true'
+      @goal = Goal.new(goal_params)
 
-    if @goal.save
-      render json: @goal, status: :created, location: @goal
-    else
-      render json: @goal.errors, status: :unprocessable_entity
+      if @goal.save
+        render json: @goal, status: :created, location: @goal
+      else
+        render json: @goal.errors, status: :unprocessable_entity
+      end
     end
   end
 
   # PATCH/PUT /goals/1
   # PATCH/PUT /goals/1.json
   def update
-    @goal = Goal.find(params[:id])
+    if current_user.admin == 'true'
+      @goal = Goal.find(params[:id])
 
-    if @goal.update(goal_params)
-      head :no_content
-    else
-      render json: @goal.errors, status: :unprocessable_entity
+      if @goal.update(goal_params)
+        head :no_content
+      else
+        render json: @goal.errors, status: :unprocessable_entity
+      end
     end
   end
 
   # DELETE /goals/1
   # DELETE /goals/1.json
   def destroy
+    return unless current_user.admin == 'true'
     @goal.destroy
 
     head :no_content

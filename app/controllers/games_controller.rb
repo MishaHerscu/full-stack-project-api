@@ -20,30 +20,35 @@ class GamesController < ProtectedController
   # POST /games
   # POST /games.json
   def create
-    @game = Game.new(game_params)
+    if current_user.admin == 'true'
+      @game = Game.new(game_params)
 
-    if @game.save
-      render json: @game, status: :created, location: @game
-    else
-      render json: @game.errors, status: :unprocessable_entity
+      if @game.save
+        render json: @game, status: :created, location: @game
+      else
+        render json: @game.errors, status: :unprocessable_entity
+      end
     end
   end
 
   # PATCH/PUT /games/1
   # PATCH/PUT /games/1.json
   def update
-    @game = Game.find(params[:id])
+    if current_user.admin == 'true'
+      @game = Game.find(params[:id])
 
-    if @game.update(update_game)
-      head :no_content
-    else
-      render json: @game.errors, status: :unprocessable_entity
+      if @game.update(update_game)
+        head :no_content
+      else
+        render json: @game.errors, status: :unprocessable_entity
+      end
     end
   end
 
   # DELETE /games/1
   # DELETE /games/1.json
   def destroy
+    return unless current_user.admin == 'true'
     @game.destroy
 
     head :no_content

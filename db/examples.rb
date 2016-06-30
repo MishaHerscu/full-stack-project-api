@@ -14,8 +14,20 @@
   next if User.exists? email: email
   User.create!(email: email,
                password: '123',
-               admin: 'true',
+               admin: 'false',
                password_confirmation: '123')
+end
+
+# make admin accounts
+if User.exists?
+  User.create!(email: 'mishaherscu@gmail.com',
+               password: '12345',
+               admin: 'true',
+               password_confirmation: '12345')
+  User.create!(email: 'sarah@sarah.com',
+               password: '12345',
+               admin: 'true',
+               password_confirmation: '12345')
 end
 
 Team.create(
