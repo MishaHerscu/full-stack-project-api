@@ -14,6 +14,7 @@
   next if User.exists? email: email
   User.create!(email: email,
                password: '123',
+               admin: 'true',
                password_confirmation: '123')
 end
 
