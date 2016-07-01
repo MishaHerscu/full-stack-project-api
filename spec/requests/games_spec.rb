@@ -80,7 +80,7 @@ RSpec.describe 'Games API' do
       it 'is not successful' do
         get '/games'
 
-        expect(response).not_to be_success
+        expect(response).to be_success
       end
     end
 
@@ -88,7 +88,7 @@ RSpec.describe 'Games API' do
       it 'is not successful' do
         get "/games/#{@game_id}"
 
-        expect(response).not_to be_success
+        expect(response).to be_success
       end
     end
   end

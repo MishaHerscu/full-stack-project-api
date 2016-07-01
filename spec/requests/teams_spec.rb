@@ -58,7 +58,7 @@ RSpec.describe 'Teams API' do
       it 'is not successful' do
         get '/teams'
 
-        expect(response).not_to be_success
+        expect(response).to be_success
       end
     end
 
@@ -66,7 +66,7 @@ RSpec.describe 'Teams API' do
       it 'is not successful' do
         get "/teams/#{@team_id}"
 
-        expect(response).not_to be_success
+        expect(response).to be_success
       end
     end
   end

@@ -64,7 +64,7 @@ RSpec.describe 'Players API' do
       it 'is not successful' do
         get '/players'
 
-        expect(response).not_to be_success
+        expect(response).to be_success
       end
     end
 
@@ -72,7 +72,7 @@ RSpec.describe 'Players API' do
       it 'is not successful' do
         get "/players/#{@player_id}"
 
-        expect(response).not_to be_success
+        expect(response).to be_success
       end
     end
   end
